@@ -17,6 +17,8 @@ class Users : Serializable {
     var gravatarId :String = ""
     @SerializedName("url")
     var url :String = ""
+    @SerializedName("name")
+    val name :String = ""
     @SerializedName("html_url")
     var htmlUrl :String = ""
     @SerializedName("followers_url")

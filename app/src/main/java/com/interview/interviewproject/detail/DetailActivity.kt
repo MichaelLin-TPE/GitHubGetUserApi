@@ -26,5 +26,7 @@ class DetailActivity : AppCompatActivity() {
         detailRepository = DetailRepositoryImpl(userName)
         dataBinding.vm = viewModel
 
+        viewModel.onActivityCreate()
+
     }
 }
