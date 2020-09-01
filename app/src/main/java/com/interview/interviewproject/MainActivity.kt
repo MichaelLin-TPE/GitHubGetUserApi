@@ -1,8 +1,10 @@
 package com.interview.interviewproject
 
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.AdapterView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
@@ -10,12 +12,18 @@ import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.interview.interviewproject.adapter.MainAdapter
 import com.interview.interviewproject.databinding.ActivityMainBinding
+import com.interview.interviewproject.detail.DetailActivity
+import com.interview.interviewproject.json_object.Users
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var dataBinding : ActivityMainBinding
 
     private lateinit var mainRepository: MainRepository
+
+    companion object{
+        const val USER_NAME_BUNDLE_KEY = "user_name"
+    }
 
     private val viewModel : MainViewModel by viewModels{
         MainViewModel.Factory(mainRepository)
@@ -36,6 +44,13 @@ class MainActivity : AppCompatActivity() {
             val adapter = MainAdapter()
             adapter.setData(it)
             dataBinding.mainRecyclerView.adapter = adapter
+            adapter.setOnItemClickListener(object : MainAdapter.OnListItemClickListener{
+                override fun onClick(usersData: Users) {
+                    val detailIntent = Intent(this@MainActivity,DetailActivity::class.java)
+                    detailIntent.putExtra(USER_NAME_BUNDLE_KEY,usersData.login)
+                    startActivity(detailIntent)
+                }
+            })
         }
 
 

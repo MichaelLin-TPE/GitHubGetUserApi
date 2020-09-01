@@ -12,6 +12,8 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
     val recyclerViewListLiveData = MutableLiveData<ArrayList<Users>>()
 
+    val showProgressBar = MutableLiveData<Boolean>(true)
+
     override fun onCleared() {
         super.onCleared()
         Log.i("Michael", "MainViewModel onCleared")
@@ -24,6 +26,7 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
     private var onGetGitHubUserApiListener = object : MainRepository.OnGetGitHubUserApiListener {
         override fun onSuccess(userDataArray: ArrayList<Users>) {
             Log.i("Michael", "user id : ${userDataArray[0].login}")
+            showProgressBar.value = false
             recyclerViewListLiveData.value = userDataArray
         }
 
