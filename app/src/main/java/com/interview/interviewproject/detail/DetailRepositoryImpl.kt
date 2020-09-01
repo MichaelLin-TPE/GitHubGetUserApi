@@ -1,5 +1,6 @@
 package com.interview.interviewproject.detail
 
+import android.util.Log
 import com.google.gson.Gson
 import com.interview.interviewproject.json_object.Users
 import com.interview.interviewproject.tool.HttpConnectionTool
@@ -13,7 +14,7 @@ class DetailRepositoryImpl(private val userName: String) : DetailRepository {
         connection.execute("https://api.github.com/users/$userName")
         connection.setOnConnectionListener(object :HttpConnectionTool.OnConnectionListener{
             override fun onSuccessful(result: String) {
-
+                Log.i("Michael","result : $result")
                 val userData : Users? = gson.fromJson(result,Users::class.java)
 
                 if (userData == null){

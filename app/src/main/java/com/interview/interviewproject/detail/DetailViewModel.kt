@@ -27,6 +27,7 @@ class DetailViewModel(private val detailRepository: DetailRepository) : ViewMode
 
     private var onGetApiListener = object : DetailRepository.OnGetApiListener{
         override fun onSuccess(users: Users) {
+            Log.i("Michael","userName : ${users.name}")
             userNameLiveData.value = users.name
             userPhotoLiveData.value = users.avatarUrl
         }

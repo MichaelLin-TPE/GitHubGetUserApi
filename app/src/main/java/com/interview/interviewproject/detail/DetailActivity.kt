@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import com.interview.interviewproject.MainActivity.Companion.USER_NAME_BUNDLE_KEY
 import com.interview.interviewproject.R
 import com.interview.interviewproject.databinding.ActivityDetailBinding
+import com.interview.interviewproject.list.ImageLoaderManager
 
 class DetailActivity : AppCompatActivity() {
 
@@ -25,8 +26,13 @@ class DetailActivity : AppCompatActivity() {
         val userName :String = detailBundle.getString(USER_NAME_BUNDLE_KEY,"")
         detailRepository = DetailRepositoryImpl(userName)
         dataBinding.vm = viewModel
+        dataBinding.lifecycleOwner = this
 
         viewModel.onActivityCreate()
+
+        viewModel.userPhotoLiveData.observeForever {
+            ImageLoaderManager.getInstance().setPhotoUrl(it,dataBinding.detailUserPhoto)
+        }
 
     }
 }

@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         dataBinding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         mainRepository = MainRepositoryImpl()
         dataBinding.vm = viewModel
+        dataBinding.lifecycleOwner = this
         InterviewApplication.getInstance()
         viewModel.onActivityCreate()
 
