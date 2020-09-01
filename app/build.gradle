@@ -19,7 +19,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -64,6 +64,11 @@ dependencies {
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 
     implementation 'androidx.multidex:multidex:2.0.1'
+
+    implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+
 
 
 }

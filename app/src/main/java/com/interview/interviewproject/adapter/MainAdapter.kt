@@ -5,10 +5,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.interview.interviewproject.databinding.ListItemBinding
 import com.interview.interviewproject.json_object.Users
+import com.interview.interviewproject.list.ImageLoaderManager
 
 class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     private lateinit var userDataArray: ArrayList<Users>
+
+    private lateinit var onListItemClickListener: OnListItemClickListener
+
+    fun setOnItemClickListener(onListItemClickListener: OnListItemClickListener){
+        this.onListItemClickListener = onListItemClickListener
+    }
 
     fun setData(userDataArray : ArrayList<Users>){
         this.userDataArray = userDataArray
@@ -24,12 +31,25 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.setData(userDataArray[position])
+        holder.setData(userDataArray[position],onListItemClickListener)
     }
 
     class ViewHolder(private val listBinding : ListItemBinding) : RecyclerView.ViewHolder(listBinding.root) {
-        fun setData(users: Users) {
-            listBinding.userData = users
+        fun setData(
+            users: Users,
+            onListItemClickListener: OnListItemClickListener
+        ) {
+            listBinding.listItemName.text = users.login
+
+            ImageLoaderManager.getInstance().setPhotoUrl(users.avatarUrl,listBinding.listItemRoundPhoto)
+            listBinding.listItemClickArea.setOnClickListener {
+                onListItemClickListener.onClick(users)
+            }
         }
+
+    }
+
+    interface OnListItemClickListener{
+        fun onClick(usersData : Users)
     }
 }

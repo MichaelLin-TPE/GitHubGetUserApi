@@ -23,7 +23,7 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
     private var onGetGitHubUserApiListener = object : MainRepository.OnGetGitHubUserApiListener {
         override fun onSuccess(userDataArray: ArrayList<Users>) {
-            Log.i("Michael", "user id : ${userDataArray[0]}")
+            Log.i("Michael", "user id : ${userDataArray[0].login}")
             recyclerViewListLiveData.value = userDataArray
         }
 

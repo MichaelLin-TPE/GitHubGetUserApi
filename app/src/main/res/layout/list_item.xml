@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
 
-
-    <data>
-        <variable
-            name="user_data"
-            type="com.interview.interviewproject.json_object.Users" />
-    </data>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="15dp"
+        android:id="@+id/list_item_click_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/list_item_round_photo"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:scaleType="centerCrop"
+            app:riv_oval="true"
+            android:layout_width="@dimen/title_photo_size"
+            android:layout_height="@dimen/title_photo_size"/>
 
-
+        <TextView
+            android:id="@+id/list_item_name"
+            android:textSize="@dimen/name_size"
+            android:textColor="@color/black"
+            tool:text="Michael"
+            app:layout_constraintTop_toTopOf="@id/list_item_round_photo"
+            app:layout_constraintBottom_toBottomOf="@id/list_item_round_photo"
+            app:layout_constraintLeft_toRightOf="@id/list_item_round_photo"
+            android:layout_marginLeft="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15sp" />
 
 
 

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.interview.interviewproject.adapter.MainAdapter
 import com.interview.interviewproject.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -26,13 +27,15 @@ class MainActivity : AppCompatActivity() {
         dataBinding = DataBindingUtil.setContentView(this,R.layout.activity_main)
         mainRepository = MainRepositoryImpl()
         dataBinding.vm = viewModel
-
+        InterviewApplication.getInstance()
         viewModel.onActivityCreate()
 
         dataBinding.mainRecyclerView.layoutManager = LinearLayoutManager(this)
 
         viewModel.recyclerViewListLiveData.observeForever {
-
+            val adapter = MainAdapter()
+            adapter.setData(it)
+            dataBinding.mainRecyclerView.adapter = adapter
         }
 
 
