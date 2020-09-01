@@ -10,22 +10,25 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
 
     val errorCodeLiveData = MutableLiveData<String>()
 
+    val recyclerViewListLiveData = MutableLiveData<ArrayList<Users>>()
+
     override fun onCleared() {
         super.onCleared()
-        Log.i("Michael","MainViewModel onCleared")
+        Log.i("Michael", "MainViewModel onCleared")
     }
 
     fun onActivityCreate() {
         mainRepository.getGitHubUserApi(onGetGitHubUserApiListener)
     }
 
-    private var onGetGitHubUserApiListener = object : MainRepository.OnGetGitHubUserApiListener{
-        override fun onSuccess(userDataArray : ArrayList<Users>) {
-                Log.i("Michael","user id : ${userDataArray[0]}")
+    private var onGetGitHubUserApiListener = object : MainRepository.OnGetGitHubUserApiListener {
+        override fun onSuccess(userDataArray: ArrayList<Users>) {
+            Log.i("Michael", "user id : ${userDataArray[0]}")
+            recyclerViewListLiveData.value = userDataArray
         }
 
         override fun onFail(errorMessage: String) {
-            Log.i("Michael","getApi fail : $errorMessage")
+            Log.i("Michael", "getApi fail : $errorMessage")
             errorCodeLiveData.value = errorMessage
         }
     }

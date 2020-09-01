@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.interview.interviewproject.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -27,6 +28,13 @@ class MainActivity : AppCompatActivity() {
         dataBinding.vm = viewModel
 
         viewModel.onActivityCreate()
+
+        dataBinding.mainRecyclerView.layoutManager = LinearLayoutManager(this)
+
+        viewModel.recyclerViewListLiveData.observeForever {
+
+        }
+
 
         viewModel.errorCodeLiveData.observeForever {
             AlertDialog.Builder(this)
