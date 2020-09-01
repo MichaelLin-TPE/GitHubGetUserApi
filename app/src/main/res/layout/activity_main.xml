@@ -2,6 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
 
+    <data>
+        <variable
+            name="vm"
+            type="com.interview.interviewproject.MainViewModel" />
+    </data>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">InterviewProject</string>
+    <string name="error_title">Error Information</string>
+    <string name="confirm">Confirm</string>
 </resources>
