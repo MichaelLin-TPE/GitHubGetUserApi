@@ -32,6 +32,12 @@ class DetailViewModel(private val detailRepository: DetailRepository) : ViewMode
 
     val isChangeStaffLayout = MutableLiveData<Boolean>(false)
 
+    val isClosePage = MutableLiveData<Boolean>(false)
+
+    fun setOnBackButtonClickListener(){
+        isClosePage.value = true
+    }
+
     override fun onCleared() {
         super.onCleared()
         Log.i("Michael","onCleared DetailViewModel")

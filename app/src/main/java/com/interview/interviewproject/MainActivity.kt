@@ -39,6 +39,9 @@ class MainActivity : AppCompatActivity() {
         dataBinding.vm = viewModel
         dataBinding.lifecycleOwner = this
         InterviewApplication.getInstance()
+
+        setSupportActionBar(dataBinding.mainToolBar)
+
         viewModel.onActivityCreate()
 
         dataBinding.mainRecyclerView.layoutManager = LinearLayoutManager(this)

@@ -31,6 +31,7 @@ class DetailActivity : AppCompatActivity() {
         dataBinding.vm = viewModel
         dataBinding.lifecycleOwner = this
 
+
         viewModel.onActivityCreate()
 
         viewModel.errorDialogLiveData.observeForever {
@@ -53,6 +54,12 @@ class DetailActivity : AppCompatActivity() {
             }
             val tvNameLayoutParams :ConstraintLayout.LayoutParams = dataBinding.detailTextUser.layoutParams as ConstraintLayout.LayoutParams
             tvNameLayoutParams.bottomToBottom = dataBinding.detailIconUser.id
+        }
+        viewModel.isClosePage.observeForever {
+            if (!it){
+                return@observeForever
+            }
+            finish()
         }
 
     }

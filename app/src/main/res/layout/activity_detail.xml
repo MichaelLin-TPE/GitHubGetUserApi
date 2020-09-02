@@ -27,6 +27,7 @@
             <ImageView
                 android:contentDescription="@null"
                 android:layout_gravity="center|start"
+                android:onClick="@{()->vm.setOnBackButtonClickListener()}"
                 android:src="@drawable/close"
                 android:layout_width="@dimen/default_icon_size"
                 android:layout_height="@dimen/default_icon_size"/>
