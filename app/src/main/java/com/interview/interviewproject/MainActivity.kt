@@ -7,8 +7,10 @@ import android.os.Bundle
 import android.widget.AdapterView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModel
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.interview.interviewproject.adapter.MainAdapter
 import com.interview.interviewproject.databinding.ActivityMainBinding
@@ -40,6 +42,12 @@ class MainActivity : AppCompatActivity() {
         viewModel.onActivityCreate()
 
         dataBinding.mainRecyclerView.layoutManager = LinearLayoutManager(this)
+
+
+        // add itemDecorator space for RecyclerViewItem
+        val itemDecorator = DividerItemDecoration(this,DividerItemDecoration.VERTICAL)
+        itemDecorator.setDrawable(ContextCompat.getDrawable(this,R.drawable.divider_height)!!)
+        dataBinding.mainRecyclerView.addItemDecoration(itemDecorator)
 
         viewModel.recyclerViewListLiveData.observeForever {
             val adapter = MainAdapter()

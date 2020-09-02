@@ -8,6 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:padding="15dp"
+        android:background="@drawable/item_background"
         android:id="@+id/list_item_click_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

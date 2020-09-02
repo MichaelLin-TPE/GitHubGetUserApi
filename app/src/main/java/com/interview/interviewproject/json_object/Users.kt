@@ -5,9 +5,12 @@ import java.io.Serializable
 
 class Users : Serializable {
 
-
+    @SerializedName("blog")
+    val blog :String? = null
+    @SerializedName("location")
+    val location :String? = null
     @SerializedName("bio")
-    var bio :String = ""
+    var bio :String? = ""
     @SerializedName("login")
     var login :String = ""
     @SerializedName("id")

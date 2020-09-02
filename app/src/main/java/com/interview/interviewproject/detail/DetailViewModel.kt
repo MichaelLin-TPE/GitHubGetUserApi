@@ -16,6 +16,18 @@ class DetailViewModel(private val detailRepository: DetailRepository) : ViewMode
 
     val userPhotoLiveData = MutableLiveData<String>()
 
+    val userLocationLiveData = MutableLiveData<String>()
+
+    val userBlogLiveData = MutableLiveData<String>()
+
+    val userLoginLiveData = MutableLiveData<String>()
+
+    val isShowUserBio = MutableLiveData<Boolean>(true)
+
+    val isShowLocation = MutableLiveData<Boolean>(true)
+
+    val isShowBlog = MutableLiveData<Boolean>(true)
+
     override fun onCleared() {
         super.onCleared()
         Log.i("Michael","onCleared DetailViewModel")
@@ -30,9 +42,24 @@ class DetailViewModel(private val detailRepository: DetailRepository) : ViewMode
             Log.i("Michael","userName : ${users.name}")
             userNameLiveData.value = users.name
             userPhotoLiveData.value = users.avatarUrl
-            if (users.bio != null){
+            userLoginLiveData.value = users.login
+            if (users.bio.isNullOrEmpty()){
+                isShowUserBio.value = false
+            }else{
                 userBioLiveData.value = users.bio
             }
+            if (users.location.isNullOrEmpty()){
+                isShowLocation.value = false
+            }else{
+                userLocationLiveData.value = users.location
+            }
+            if (users.blog.isNullOrEmpty()){
+                isShowBlog.value = false
+            }else{
+                userBlogLiveData.value = users.blog
+            }
+
+
         }
 
         override fun onFail(errorMessage: String) {

@@ -7,6 +7,7 @@
         <variable
             name="vm"
             type="com.interview.interviewproject.detail.DetailViewModel" />
+        <import type="android.view.View"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,6 +43,7 @@
         <TextView
             android:id="@+id/detail_user_bio"
             android:textSize="@dimen/detail_user_name_size"
+            android:visibility="@{vm.isShowUserBio ? View.VISIBLE : View.GONE}"
             android:text="@{vm.userBioLiveData}"
             app:layout_constraintTop_toBottomOf="@id/detail_user_name"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -73,6 +75,7 @@
         <ImageView
             android:id="@+id/detail_icon_location"
             android:contentDescription="@null"
+            android:visibility="@{vm.isShowLocation ? View.VISIBLE : View.GONE}"
             app:layout_constraintTop_toBottomOf="@id/detail_icon_user"
             app:layout_constraintLeft_toLeftOf="@id/detail_line"
             android:layout_marginTop="30dp"
@@ -84,6 +87,7 @@
         <ImageView
             android:id="@+id/detail_icon_link"
             android:contentDescription="@null"
+            android:visibility="@{vm.isShowBlog ? View.VISIBLE : View.GONE}"
             app:layout_constraintTop_toBottomOf="@id/detail_icon_location"
             app:layout_constraintLeft_toLeftOf="@id/detail_line"
             android:layout_marginTop="30dp"
@@ -96,6 +100,7 @@
             android:id="@+id/detail_text_user"
             android:textSize="@dimen/normal_text_size"
             android:textColor="@color/grey"
+            android:text="@{vm.userLoginLiveData}"
             app:layout_constraintTop_toTopOf="@id/detail_icon_user"
             app:layout_constraintLeft_toRightOf="@id/detail_icon_user"
             app:layout_constraintBottom_toBottomOf="@id/detail_icon_user"
@@ -107,7 +112,9 @@
         <TextView
             android:id="@+id/detail_text_location"
             android:textSize="@dimen/normal_text_size"
+            android:text="@{vm.userLocationLiveData}"
             android:textColor="@color/grey"
+            android:visibility="@{vm.isShowLocation ? View.VISIBLE : View.GONE}"
             app:layout_constraintTop_toTopOf="@id/detail_icon_location"
             app:layout_constraintLeft_toRightOf="@id/detail_icon_location"
             app:layout_constraintBottom_toBottomOf="@id/detail_icon_location"
@@ -119,7 +126,9 @@
         <TextView
             android:id="@+id/detail_text_link"
             android:textSize="@dimen/normal_text_size"
+            android:text="@{vm.userBlogLiveData}"
             android:textColor="@color/bule"
+            android:visibility="@{vm.isShowBlog ? View.VISIBLE : View.GONE}"
             app:layout_constraintTop_toTopOf="@id/detail_icon_link"
             app:layout_constraintLeft_toRightOf="@id/detail_icon_link"
             app:layout_constraintBottom_toBottomOf="@id/detail_icon_link"
