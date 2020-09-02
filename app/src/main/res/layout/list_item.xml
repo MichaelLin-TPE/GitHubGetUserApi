@@ -27,12 +27,29 @@
             android:textColor="@color/black"
             tool:text="Michael"
             app:layout_constraintTop_toTopOf="@id/list_item_round_photo"
-            app:layout_constraintBottom_toBottomOf="@id/list_item_round_photo"
+            app:layout_constraintBottom_toTopOf="@id/list_item_staff"
             app:layout_constraintLeft_toRightOf="@id/list_item_round_photo"
             android:layout_marginLeft="15sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15sp" />
+        <TextView
+            android:id="@+id/list_item_staff"
+            android:textSize="@dimen/name_size"
+            android:textColor="@color/white"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:background="@drawable/item_staff_background"
+            android:text="@string/staff"
+            app:layout_constraintTop_toBottomOf="@id/list_item_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/list_item_round_photo"
+            android:layout_marginLeft="15sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15sp" />
+
+
 
 
 

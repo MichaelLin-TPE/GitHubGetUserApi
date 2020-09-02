@@ -1,7 +1,9 @@
 package com.interview.interviewproject.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.interview.interviewproject.databinding.ListItemBinding
 import com.interview.interviewproject.json_object.Users
@@ -45,6 +47,15 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
             listBinding.listItemClickArea.setOnClickListener {
                 onListItemClickListener.onClick(users)
             }
+
+            val layoutParams :ConstraintLayout.LayoutParams = listBinding.listItemName.layoutParams as ConstraintLayout.LayoutParams
+
+            if (users.siteAdmin == "false"){
+                layoutParams.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID
+            }
+            listBinding.listItemStaff.visibility = if (users.siteAdmin == "true") View.VISIBLE else View.GONE
+
+
         }
 
     }

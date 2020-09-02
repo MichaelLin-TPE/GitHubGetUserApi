@@ -28,6 +28,10 @@ class DetailViewModel(private val detailRepository: DetailRepository) : ViewMode
 
     val isShowBlog = MutableLiveData<Boolean>(true)
 
+    val isShowStaff = MutableLiveData<Boolean>(false)
+
+    val isChangeStaffLayout = MutableLiveData<Boolean>(false)
+
     override fun onCleared() {
         super.onCleared()
         Log.i("Michael","onCleared DetailViewModel")
@@ -58,7 +62,12 @@ class DetailViewModel(private val detailRepository: DetailRepository) : ViewMode
             }else{
                 userBlogLiveData.value = users.blog
             }
-
+            if (users.siteAdmin == "false"){
+                isChangeStaffLayout.value = true
+                isShowStaff.value = false
+            }else{
+                isShowStaff.value = true
+            }
 
         }
 
