@@ -4,4 +4,6 @@
     <dimen name="name_size">16sp</dimen>
     <dimen name="detail_user_photo_size">220dp</dimen>
     <dimen name="detail_user_name_size">18sp</dimen>
+    <dimen name="icon_size">50dp</dimen>
+    <dimen name="normal_text_size">15sp</dimen>
 </resources>

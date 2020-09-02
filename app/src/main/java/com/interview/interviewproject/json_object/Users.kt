@@ -5,6 +5,9 @@ import java.io.Serializable
 
 class Users : Serializable {
 
+
+    @SerializedName("bio")
+    var bio :String = ""
     @SerializedName("login")
     var login :String = ""
     @SerializedName("id")

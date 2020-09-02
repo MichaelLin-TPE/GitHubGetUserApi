@@ -42,6 +42,7 @@
         <TextView
             android:id="@+id/detail_user_bio"
             android:textSize="@dimen/detail_user_name_size"
+            android:text="@{vm.userBioLiveData}"
             app:layout_constraintTop_toBottomOf="@id/detail_user_name"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -57,6 +58,75 @@
             android:background="@color/grey"
             android:layout_width="match_parent"
             android:layout_height="1dp"/>
+
+
+        <ImageView
+            android:id="@+id/detail_icon_user"
+            android:contentDescription="@null"
+            app:layout_constraintTop_toBottomOf="@id/detail_line"
+            app:layout_constraintLeft_toLeftOf="@id/detail_line"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/user"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"/>
+
+        <ImageView
+            android:id="@+id/detail_icon_location"
+            android:contentDescription="@null"
+            app:layout_constraintTop_toBottomOf="@id/detail_icon_user"
+            app:layout_constraintLeft_toLeftOf="@id/detail_line"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/pin"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"/>
+
+
+        <ImageView
+            android:id="@+id/detail_icon_link"
+            android:contentDescription="@null"
+            app:layout_constraintTop_toBottomOf="@id/detail_icon_location"
+            app:layout_constraintLeft_toLeftOf="@id/detail_line"
+            android:layout_marginTop="30dp"
+            android:src="@drawable/link"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"/>
+
+
+        <TextView
+            android:id="@+id/detail_text_user"
+            android:textSize="@dimen/normal_text_size"
+            android:textColor="@color/grey"
+            app:layout_constraintTop_toTopOf="@id/detail_icon_user"
+            app:layout_constraintLeft_toRightOf="@id/detail_icon_user"
+            app:layout_constraintBottom_toBottomOf="@id/detail_icon_user"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/detail_text_location"
+            android:textSize="@dimen/normal_text_size"
+            android:textColor="@color/grey"
+            app:layout_constraintTop_toTopOf="@id/detail_icon_location"
+            app:layout_constraintLeft_toRightOf="@id/detail_icon_location"
+            app:layout_constraintBottom_toBottomOf="@id/detail_icon_location"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/detail_text_link"
+            android:textSize="@dimen/normal_text_size"
+            android:textColor="@color/bule"
+            app:layout_constraintTop_toTopOf="@id/detail_icon_link"
+            app:layout_constraintLeft_toRightOf="@id/detail_icon_link"
+            app:layout_constraintBottom_toBottomOf="@id/detail_icon_link"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

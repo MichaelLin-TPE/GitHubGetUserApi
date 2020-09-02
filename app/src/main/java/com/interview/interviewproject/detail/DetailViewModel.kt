@@ -30,6 +30,9 @@ class DetailViewModel(private val detailRepository: DetailRepository) : ViewMode
             Log.i("Michael","userName : ${users.name}")
             userNameLiveData.value = users.name
             userPhotoLiveData.value = users.avatarUrl
+            if (users.bio != null){
+                userBioLiveData.value = users.bio
+            }
         }
 
         override fun onFail(errorMessage: String) {
