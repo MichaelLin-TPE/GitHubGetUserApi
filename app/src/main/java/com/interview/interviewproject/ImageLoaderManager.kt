@@ -53,8 +53,5 @@ class ImageLoaderManager  {
     fun setPhotoUrl(url: String?, ivImage: ImageView?) {
         imageLoader.displayImage(url, ivImage, options)
     }
-    fun getImage(url:String) : Bitmap{
-        return imageLoader.loadImageSync(url,options)
-    }
 
 }

@@ -17,6 +17,10 @@ import com.interview.interviewproject.databinding.ActivityMainBinding
 import com.interview.interviewproject.detail.DetailActivity
 import com.interview.interviewproject.json_object.Users
 
+/**
+ * Using MVVM + Repository + dataBinding
+ */
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var dataBinding : ActivityMainBinding
@@ -38,10 +42,14 @@ class MainActivity : AppCompatActivity() {
         mainRepository = MainRepositoryImpl()
         dataBinding.vm = viewModel
         dataBinding.lifecycleOwner = this
+
+        //Dependency Injection
         InterviewApplication.getInstance()
 
         setSupportActionBar(dataBinding.mainToolBar)
 
+
+        //the flow start from here
         viewModel.onActivityCreate()
 
         dataBinding.mainRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -52,6 +60,8 @@ class MainActivity : AppCompatActivity() {
         itemDecorator.setDrawable(ContextCompat.getDrawable(this,R.drawable.divider_height)!!)
         dataBinding.mainRecyclerView.addItemDecoration(itemDecorator)
 
+
+        //set RecyclerView Data to Adapter
         viewModel.recyclerViewListLiveData.observeForever {
             val adapter = MainAdapter()
             adapter.setData(it)
@@ -65,7 +75,7 @@ class MainActivity : AppCompatActivity() {
             })
         }
 
-
+        //catch errorCode dialog
         viewModel.errorCodeLiveData.observeForever {
             AlertDialog.Builder(this)
                 .setTitle(getString(R.string.error_title))

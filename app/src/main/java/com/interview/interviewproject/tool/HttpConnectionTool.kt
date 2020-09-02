@@ -6,6 +6,10 @@ import java.io.InputStreamReader
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 
+/**
+ * Using AsyncTask to create a HttpUrlConnect to Get Api Json
+ */
+
 class HttpConnectionTool : AsyncTask<String?, Void?, String>() {
 
     private var listener: OnConnectionListener? = null

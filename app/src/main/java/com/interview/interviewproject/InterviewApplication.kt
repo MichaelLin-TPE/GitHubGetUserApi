@@ -21,6 +21,8 @@ class InterviewApplication : MultiDexApplication() {
         super.onCreate()
         Log.i("Michael","DexApp context onCreate")
         instance = this
+
+        //init ImageLoaderManager
         ImageLoaderManager.getInstance().init(applicationContext)
     }
 }

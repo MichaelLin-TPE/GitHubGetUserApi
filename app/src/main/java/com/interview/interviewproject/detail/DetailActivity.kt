@@ -12,6 +12,10 @@ import com.interview.interviewproject.R
 import com.interview.interviewproject.databinding.ActivityDetailBinding
 import com.interview.interviewproject.list.ImageLoaderManager
 
+/**
+ * Using MVVM + Repository + dataBinding
+ */
+
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var dataBinding : ActivityDetailBinding
@@ -31,9 +35,10 @@ class DetailActivity : AppCompatActivity() {
         dataBinding.vm = viewModel
         dataBinding.lifecycleOwner = this
 
-
+        // Flow start from here
         viewModel.onActivityCreate()
 
+        // ErrorDialog
         viewModel.errorDialogLiveData.observeForever {
             AlertDialog.Builder(this)
                 .setTitle(getString(R.string.error_title))
@@ -45,9 +50,13 @@ class DetailActivity : AppCompatActivity() {
                 }).create().show()
         }
 
+        //Start to download image
         viewModel.userPhotoLiveData.observeForever {
             ImageLoaderManager.getInstance().setPhotoUrl(it,dataBinding.detailUserPhoto)
         }
+
+
+        //Determine the siteAdmin is true or false to change layoutParams
         viewModel.isChangeStaffLayout.observeForever {
             if (!it){
                 return@observeForever
@@ -55,6 +64,7 @@ class DetailActivity : AppCompatActivity() {
             val tvNameLayoutParams :ConstraintLayout.LayoutParams = dataBinding.detailTextUser.layoutParams as ConstraintLayout.LayoutParams
             tvNameLayoutParams.bottomToBottom = dataBinding.detailIconUser.id
         }
+        //close Page
         viewModel.isClosePage.observeForever {
             if (!it){
                 return@observeForever
